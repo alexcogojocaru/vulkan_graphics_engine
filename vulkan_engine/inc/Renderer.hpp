@@ -9,23 +9,29 @@
 #include <vector>
 #include <exception>
 
-class Renderer
+namespace vulkanapi
 {
-private:
-	VkInstance m_instance;
+	namespace engine
+	{
+		class Renderer
+		{
+		private:
+			VkInstance m_instance;
 
-	static std::shared_ptr<Renderer> renderer_instance;
+			static std::shared_ptr<Renderer> renderer_instance;
 
-public:
-	~Renderer();
+		public:
+			~Renderer();
 
-	static std::shared_ptr<Renderer> getInstance();
+			static std::shared_ptr<Renderer> getInstance();
 
-private:
-	Renderer();
+		private:
+			Renderer();
 
-	void createInstance();
-	void choosePhysicalDevice();
-};
+			void createInstance();
+			void choosePhysicalDevice();
+		};
+	} // namespace engine
+} // namespace vulkanapi
 
 #endif // __RENDERER_HPP__

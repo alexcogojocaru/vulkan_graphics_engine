@@ -5,6 +5,7 @@
 #include "Renderer.hpp"
 
 using namespace std;
+using namespace vulkanapi::engine;
 
 int main()
 {

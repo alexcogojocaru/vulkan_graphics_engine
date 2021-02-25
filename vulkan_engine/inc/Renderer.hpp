@@ -13,6 +13,10 @@ namespace vulkanapi
 {
 	namespace engine
 	{
+		/*
+			The renderer class implements the creation of the vulkan instance and devices
+			The class makes use of the singleton design pattern
+		*/
 		class Renderer
 		{
 		private:
@@ -21,6 +25,9 @@ namespace vulkanapi
 			static std::shared_ptr<Renderer> renderer_instance;
 
 		public:
+			Renderer(const Renderer&) = delete;
+			Renderer operator=(const Renderer&) = delete;
+
 			~Renderer();
 
 			static std::shared_ptr<Renderer> getInstance();
@@ -28,7 +35,15 @@ namespace vulkanapi
 		private:
 			Renderer();
 
+			/*
+				This method creates the vulkan instance and throws a runtime error
+				if the creation process fails
+			*/
 			void createInstance();
+
+			/*
+				This method chooses the gpu or gpus installed in the pc 
+			*/
 			void choosePhysicalDevice();
 		};
 	} // namespace engine
